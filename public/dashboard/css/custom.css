@@ -1,0 +1,16 @@
+
+.custom-form-field label{
+    margin: 15px 0px;
+}
+
+.modal-footer{
+    margin-right: 15px;
+}
+
+.custom-form-switch{
+    margin-top: 15px;
+}
+
+.form-switch .form-check-input{
+    margin-top: 20px;
+}
