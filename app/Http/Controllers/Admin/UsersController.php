@@ -16,4 +16,14 @@ class UsersController extends Controller
         $key = $this->mapKey;
         return view('dashboard/users/table',compact(['users','key']));
     }
+
+    public function postTable(Request $request){
+        $user = User::find($request->userId);
+        $user->isDriver = $request->isDriver;
+        $user->role = $request->role;
+        $user->save();
+
+        session()->flash('userUpdated','تم تحديث بيانات المستخدم بنجاح');
+        return redirect()->back();
+    }
 }

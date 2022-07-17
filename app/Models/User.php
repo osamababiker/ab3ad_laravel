@@ -27,6 +27,7 @@ class User extends Authenticatable
         'lat',
         'address', 
         'role', 
+        'rating',
         'notificationToken',
         'verification_code',
         'isVerify',

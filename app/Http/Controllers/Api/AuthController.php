@@ -20,31 +20,30 @@ class AuthController extends Controller
             'lng'       => 'required',
             'lat'       => 'required',
             'password'  => 'required|confirmed',
-            'notificationToken'       => 'required',
+            'notificationToken' => 'required',
         ];
 
         $validator = Validator::make($request->all(), $rules);
         if($validator->fails()){
             return response()->json(['errors' => $validator->errors()], 200);
         }
-        
-        $digits = mt_rand(1000,9999);
-        $user = User::create([
-            'name'      => $request->name,
-            'phone'     => $request->phone,
-            'address'   => $request->address,
-            'lng'       => $request->lng,
-            'lat'       => $request->lat,
-            'password'  => bcrypt($request->password),
-            'notificationToken' => $request->notificationToken,
-            'verification_code' => $digits
-        ]);
 
-        $user = User::find($user->id);
+        $digits = mt_rand(1000,9999);
+        $user = new User();
+        $user->name = $request->name;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+        $user->lat = $request->lat;
+        $user->lng = $request->lng;
+        $user->password = bcrypt($request->password);
+        $user->notificationToken = $request->notificationToken;
+        $user->verification_code = $digits;
+        $user->save();
+
         return response()->json([
             'errors' => '',
             'user' => $user
-        ], 200);
+        ], 201);
 
     }
 

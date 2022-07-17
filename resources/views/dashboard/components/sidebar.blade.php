@@ -39,9 +39,9 @@
                     <li class="sidebar-item"><a class="sidebar-link" href="{{ route('itemsTable') }}"> جدول المنتجات </a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="{{ route('categoriesTable') }}"> جدول التصنيفات </a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="{{ route('usersTable') }}"> جدول المستخدمين </a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="{{ route('driversTable') }}"> جدول السائقين </a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="{{ route('ordersTable') }}"> جدول الطلبات </a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="{{ route('settingsTable') }}">  اعدادات التطبيق </a></li> 
+                    <li class="sidebar-item"><a class="sidebar-link" href="{{ route('requestsTable') }}"> جدول طلبات التوصيل </a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="{{ route('settingsTable') }}">  اعدادات التطبيق </a></li>
                 </ul>
             </li>
         </ul>
@@ -65,14 +65,14 @@
                         <img src="{{ asset('dashboard/img/avatars/avatar.jpg') }}" class="avatar img-fluid rounded-circle me-1" alt="{{ Auth::user()->name }}" /> <span class="text-dark"> {{ Auth::user()->name }} </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end">
-                        
+
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <button type="submit" class="dropdown-item">
                                 تسجيل خروج
                             </button>
                         </form>
-                  
+
                     </div>
                 </li>
             </ul>

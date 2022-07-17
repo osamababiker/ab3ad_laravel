@@ -5,9 +5,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Responsive Bootstrap 5 Admin &amp; Dashboard Template">
-    <meta name="author" content="Bootlab">
-    <title>قريب - تسجيل دخول</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>أبعاد - تسجيل دخول</title>
     <link rel="shortcut icon" href="img/favicon.ico">
 
     <link class="js-stylesheet" href="{{ asset('dashboard/css/ar-light.css') }}" rel="stylesheet">
@@ -34,7 +34,7 @@
                                 <div class="card-body">
                                     <div class="m-sm-4">
                                         <div class="text-center">
-                                            <img src="{{ asset('dashboard/img/avatars/avatar.jpg') }}" alt="Chris Wood"
+                                            <img src="{{ asset('dashboard/img/logo.jpg') }}" alt="Chris Wood"
                                                 class="img-fluid rounded-circle" width="132" height="132" />
                                         </div>
                                         <form method="POST" action="{{ route('login') }}">

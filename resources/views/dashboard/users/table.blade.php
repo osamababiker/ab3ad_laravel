@@ -12,6 +12,15 @@
 
                     <h1 class="h3 mb-3"> جدول ادارة المستخدمين </h1>
 
+                    @if(session()->has('userUpdated'))
+                        <div class="alert alert-success alert-dismissible" id="successAlert"  role="alert">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            <div class="alert-message">
+                                <strong> اهلا {{ Auth::user()->name }} </strong> {{session()->get('userUpdated')}}
+                            </div>
+                        </div>
+                    @endif
+
 
                     <div class="row">
                         <div class="col-12">
@@ -28,7 +37,8 @@
                                                 <th> الايميل</th>
                                                 <th>رقم الهاتف</th>
                                                 <th>العنوان</th>
-                                                <th>الموقع في الخريطة</th>
+                                                <th>نوع الحساب</th>
+                                                <th>الاعدادات</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -40,12 +50,19 @@
                                                 <td>{{ $user->address }}</td>
                                                 <td>
                                                 <a class="btn" style="background-color: #fff; border: 1px solid #000" href="javascript::void()" data-bs-toggle="modal" data-bs-target="#locationModal_{{ $user->id }}">
-                                                    اعرض
+                                                    @if($user->isDriver == 1)
+                                                        <span> مندوب </span>
+                                                    @else
+                                                        <span> عميل </span>
+                                                    @endif
                                                 </a>
                                                 </td>
+                                                <td>
+                                                    <a href="javascript::void()" data-bs-toggle="modal" data-bs-target="#editUserModal_{{ $user->id }}"> <i class="fa fa-edit"></i> </a>
+                                                </td>
                                             </tr>
-                                            <!-- user location modal -->
-                                            @include('dashboard/users/components/locationModal');
+                                            <!-- edit user modal -->
+                                            @include('dashboard/users/components/editModal')
                                             @endforeach
                                         </tbody>
                                     </table>

@@ -5,14 +5,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\UsersController;
-use App\Http\Controllers\Admin\DriversController; 
+use App\Http\Controllers\Admin\DriversController;
 use App\Http\Controllers\Admin\OrdersController;
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\ItemsController;
+use App\Http\Controllers\Admin\DeliveryRequestsController;
 
 
 require __DIR__.'/auth.php';
-
+ 
 Route::get('/', function () {
     return view('index');
 });
@@ -28,26 +29,10 @@ Route::get(
     [UsersController::class,'getTable']
 )->middleware(['admin'])->name('usersTable');
 
-// Route form app drivers
-Route::get(
-    '/dashboard/drivers/table',
-    [DriversController::class,'getTable']
-)->middleware(['admin'])->name('driversTable');
-
-Route::post( 
-    '/dashboard/drivers/table',
-    [DriversController::class,'postTable']
-)->middleware(['admin'])->name('driversTable');
-
-Route::get(
-    '/dashboard/drivers/table/driverReport/{driverId}',
-    [DriversController::class,'getDriverReport']
-)->middleware(['admin'])->name('driversTable.driverReport');
-
 Route::post(
-    '/dashboard/drivers/table/driverReport/{driverId}',
-    [DriversController::class,'postDriverReport']
-)->middleware(['admin'])->name('driversTable.driverReport');
+    '/dashboard/users/table',
+    [UsersController::class,'postTable']
+)->middleware(['admin'])->name('usersTable');
 
 
 // Route users orders
@@ -56,6 +41,17 @@ Route::get(
     [OrdersController::class,'getTable']
 )->middleware(['admin'])->name('ordersTable');
 
+
+
+// Route to manage delivery requests
+Route::get(
+    '/dashboard/deliveryRequests/table',
+    [DeliveryRequestsController::class,'getTable']
+)->middleware(['admin'])->name('requestsTable');
+Route::post(
+    '/dashboard/deliveryRequests/table',
+    [DeliveryRequestsController::class,'postTable']
+)->middleware(['admin'])->name('requestsTable');
 
 
 

@@ -65,7 +65,7 @@ class CategoriesController extends Controller
         }
 
         if($request->has('deleteCategoryBtn')){
-            $category = Category::find($request->storeId);
+            $category = Category::find($request->categoryId);
             if(file_exists(public_path('upload/categories/'.$category->image))){
                 unlink(public_path('upload/categories/'.$category->image));
             }

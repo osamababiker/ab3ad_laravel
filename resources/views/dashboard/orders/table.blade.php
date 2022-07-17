@@ -31,6 +31,7 @@
                                                 <th> وقت التسليم </th>
                                                 <th>  ملاحظات </th>
                                                 <th>حالة الطلب</th>
+                                                <th> تاريخ الطلب </th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -41,10 +42,10 @@
                                                 <td>{{ $order->category->name }} / {{ $order->item_type }}</td>
                                                 <td>{{ $order->quantity }}</td>
                                                 <td>{{ $order->delivary_time }}</td>
-                                                <td> 
+                                                <td>
                                                     <a class="btn" style="background-color: #fff; border: 1px solid #000" href="javascript::void()" data-bs-toggle="modal" data-bs-target="#orderNotesModal_{{ $order->id }}">
                                                     اعرض
-                                                    </a> 
+                                                    </a>
                                                 <td>
                                                     @if($order->status == 0)
                                                     <p style="color: #000"> استقبال العروض </p>
@@ -56,6 +57,7 @@
                                                     <p style="color: #000"> تم الالغاء </p>
                                                     @endif
                                                 </td>
+                                                <td> {{ $order->created_at }} </td>
                                             </tr>
                                             @include('dashboard.orders.components.order_notes')
                                             @endforeach
