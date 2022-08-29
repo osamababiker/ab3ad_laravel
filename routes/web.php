@@ -13,10 +13,14 @@ use App\Http\Controllers\Admin\DeliveryRequestsController;
 
 
 require __DIR__.'/auth.php';
- 
+
 Route::get('/', function () {
     return view('index');
 });
+
+Route::get('/policy',
+    [HomeController::class,'policy']
+)->name('policy');
 
 Route::get('/admin-dashboard',
     [HomeController::class,'index']

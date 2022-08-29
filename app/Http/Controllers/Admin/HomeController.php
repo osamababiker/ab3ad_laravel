@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\User;
+use App\Models\Setting;
 
 class HomeController extends Controller
 {
@@ -15,5 +16,10 @@ class HomeController extends Controller
         $users_count = User::count();
         $drivers_count = User::where('isDriver', 1)->count();
         return view('dashboard/index',compact(['orders_count','users_count','drivers_count']));
+    }
+
+    public function policy(){
+        $setting = Setting::first();
+        return view('policy', compact(['setting']));
     }
 }
